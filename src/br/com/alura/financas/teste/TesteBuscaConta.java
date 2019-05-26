@@ -5,22 +5,23 @@ import javax.persistence.EntityManager;
 import br.com.alura.financas.modelo.Conta;
 import br.com.alura.financas.util.JPAUtil;
 
-public class TesteConta {
+public class TesteBuscaConta {
 
 	public static void main(String[] args) {
 		
 		Conta conta = new Conta();
-		conta.setTitular("Leonardo");
-		conta.setAgencia("123");
-		conta.setBanco("Caixa economica");
-		conta.setNumero("456");
 		
 		EntityManager em = new JPAUtil().getEntityManager();
 		
 		em.getTransaction().begin();
-		em.persist(conta);
-		em.getTransaction().commit();
 		
+		conta = em.find(Conta.class, 1);
+		System.out.println("antiga = " + conta.getAgencia());
+		conta.setAgencia("987");
+		System.out.println("nova = " + conta.getAgencia());
+		
+		em.getTransaction().commit();
 		em.close();
+		
 	}
 }
