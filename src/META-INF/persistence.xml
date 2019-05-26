@@ -12,6 +12,7 @@
 
 		<!-- Aqui são listadas todas as entidades -->
 		<class>br.com.alura.financas.modelo.Conta</class>
+		<class>br.com.alura.financas.modelo.Movimentacao</class>
 
 		<properties>
 			<!-- Propriedades JDBC -->
