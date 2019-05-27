@@ -9,9 +9,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import java.util.List;
 
 @Entity
 public class Movimentacao {
@@ -32,6 +35,9 @@ public class Movimentacao {
 
 	@ManyToOne
 	private Conta conta;
+	
+	@ManyToMany
+	private List<Categoria> categorias;
 
 	public Integer getId() {
 		return id;
@@ -39,6 +45,14 @@ public class Movimentacao {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+	
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
 	}
 
 	public BigDecimal getValor() {
