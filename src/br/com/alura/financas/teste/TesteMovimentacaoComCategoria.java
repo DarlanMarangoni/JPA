@@ -45,7 +45,7 @@ public class TesteMovimentacaoComCategoria {
 		movimentacao2.setDescricao("Viagem a RJ");
 		movimentacao2.setTipo(TipoMovimentacao.SAIDA);
 		movimentacao2.setValor(new BigDecimal("300.0"));
-		movimentacao1.setCategorias(Arrays.asList(categoria1, categoria2));
+		movimentacao2.setCategorias(Arrays.asList(categoria1, categoria2));
 		
 		movimentacao2.setConta(conta);
 		
