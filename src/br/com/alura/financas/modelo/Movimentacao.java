@@ -2,6 +2,7 @@ package br.com.alura.financas.modelo;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,12 +12,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import java.util.List;
-
 @Entity
+@NamedQuery(query="Select avg (m.valor) from Movimentacao m where m.conta = :pConta" + " and m.tipo = :pTipo"
+		+ " group by day(m.data), month(m.data), year(m.data)", name="getMediasDia")
 public class Movimentacao {
 
 	@Id
