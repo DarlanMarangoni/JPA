@@ -11,9 +11,10 @@ import br.com.alura.financas.modelo.Movimentacao;
 import br.com.alura.financas.modelo.TipoMovimentacao;
 import br.com.alura.financas.util.JPAUtil;
 
-public class TesteJpql {
+public class TesteContarJPQL {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {		
+		
 
 		EntityManager em = new JPAUtil().getEntityManager();
 		em.getTransaction().begin();
@@ -21,7 +22,7 @@ public class TesteJpql {
 		Conta conta = new Conta();
 		conta.setId(2);
 		
-		String jpql = "Select m from Movimentacao m where m.conta = :pConta" + 
+		String jpql = "Select count (m) from Movimentacao m where m.conta = :pConta" + 
 														" and m.tipo = :pTipo" + 
 														" order by m.valor desc";
 		
@@ -29,13 +30,11 @@ public class TesteJpql {
 		query.setParameter("pConta", conta);
 		query.setParameter("pTipo", TipoMovimentacao.SAIDA);
 		
-		List<Movimentacao> movimentacoes = query.getResultList();
-		
-		for (Movimentacao m : movimentacoes) {
-			System.out.println("Descricao: " + m.getDescricao());
-		}
-		
+		Long qtdeSaida = (Long) query.getSingleResult();
+			
+		System.out.println("Maximo de Saida: " + qtdeSaida);
 		em.getTransaction().commit();
 		em.close();
+	
 	}
 }

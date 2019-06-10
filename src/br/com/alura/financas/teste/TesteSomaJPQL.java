@@ -1,6 +1,5 @@
 package br.com.alura.financas.teste;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -11,10 +10,10 @@ import br.com.alura.financas.modelo.Movimentacao;
 import br.com.alura.financas.modelo.TipoMovimentacao;
 import br.com.alura.financas.util.JPAUtil;
 
-public class TesteJpql {
+public class TesteSomaJPQL {
 
 	public static void main(String[] args) {
-
+		
 		EntityManager em = new JPAUtil().getEntityManager();
 		em.getTransaction().begin();
 		
